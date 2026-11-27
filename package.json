@@ -1,0 +1,22 @@
+{
+  "name": "kinara-pilates-admin",
+  "version": "1.0.0",
+  "description": "Admin dashboard Kinara Pilates dengan HTML, CSS, Express, dan SQLite",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "reset-admin": "node src/reset-admin.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.5.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  }
+}

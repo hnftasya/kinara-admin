@@ -1,0 +1,12 @@
+require('dotenv').config();
+const bcrypt = require('bcryptjs');
+const db = require('./db/init');
+const username = process.env.ADMIN_USERNAME || 'asya';
+const password = process.env.ADMIN_PASSWORD || 'Kinara123!';
+const hash = bcrypt.hashSync(password, 12);
+const found = db.prepare('SELECT id FROM admins WHERE username=?').get(username);
+if (found) db.prepare('UPDATE admins SET password_hash=? WHERE id=?').run(hash, found.id);
+else db.prepare('INSERT INTO admins(username,password_hash) VALUES(?,?)').run(username, hash);
+console.log(`Akun admin berhasil direset. Username: ${username}`);
+console.log('Password mengikuti ADMIN_PASSWORD di .env, atau Kinara123! jika belum diatur.');
+db.close();
